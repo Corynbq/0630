@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{254282e6-0cf9-5f9e-e674-b0c659506f72}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sirenix.OdinInspector.CompatibilityLayer.Editor", "Sirenix.OdinInspector.CompatibilityLayer.Editor.csproj", "{a66634ec-b672-82e7-676c-6fabc3a921a5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sirenix.OdinInspector.CompatibilityLayer", "Sirenix.OdinInspector.CompatibilityLayer.csproj", "{dc433a8c-9c30-a4ad-3b78-b437765f9184}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{64eeadb0-fcde-ad37-d0b7-a1307d825048}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sirenix.OdinInspector.Modules.UnityMathematics", "Sirenix.OdinInspector.Modules.UnityMathematics.csproj", "{7c95e0e8-3303-5438-ba00-bb362f3d374f}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-firstpass", "Assembly-CSharp-firstpass.csproj", "{87f13ae6-d660-07f3-ec94-5540013afe69}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,8 +20,16 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{254282e6-0cf9-5f9e-e674-b0c659506f72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{254282e6-0cf9-5f9e-e674-b0c659506f72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{a66634ec-b672-82e7-676c-6fabc3a921a5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{a66634ec-b672-82e7-676c-6fabc3a921a5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{dc433a8c-9c30-a4ad-3b78-b437765f9184}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{dc433a8c-9c30-a4ad-3b78-b437765f9184}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64eeadb0-fcde-ad37-d0b7-a1307d825048}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{64eeadb0-fcde-ad37-d0b7-a1307d825048}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7c95e0e8-3303-5438-ba00-bb362f3d374f}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7c95e0e8-3303-5438-ba00-bb362f3d374f}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87f13ae6-d660-07f3-ec94-5540013afe69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87f13ae6-d660-07f3-ec94-5540013afe69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
