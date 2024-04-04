@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 namespace ns
 {
@@ -16,29 +17,46 @@ namespace ns
         public Sprite[] guaSpriteAssemble;
         public GameObject[] randomGuaImagePosition;
         public GameObject chosenGua;
-        public GameObject[] skillImagePosition;
+        public Transform skillImagePosition;
 
         [Header("BloodBarShow")]
         public Scrollbar bloodBar;
 
         [Header("SkillButton(随机，移动障碍物，旋转)")]
         public Button[] skillButtons;
+        public Button confirm;
+        public Button cancel;
+        public GameObject skillButtonAssemble;
+        public GameObject confirmButtonAssemble;
 
+        [Header("EventSystem")]
+        public EventSystem eventSystem;
+
+        public SkillLogical skillLogical;
         [HideInInspector]
         public SpriteRenderer chosenGuaSpriteRenderer;
         [HideInInspector]
-        public Sprite chosenGuaSprite;
+        public GraphicRaycaster graphicRaycaster;
+        [HideInInspector]
+        public RectTransform chosenGuaRectTransform;
+
+        public RoundControl roundControl;
 
         private void Start()
         {
-            chosenGuaSpriteRenderer = chosenGua.GetComponent<SpriteRenderer>();
-            chosenGuaSprite = chosenGuaSpriteRenderer.GetComponent<Sprite>();
+            graphicRaycaster = GetComponent<GraphicRaycaster>();
+            chosenGuaRectTransform = chosenGua.GetComponent<RectTransform>();
+            skillButtons[0].onClick.AddListener(ActionControlRandomGua);
+            skillButtons[1].onClick.AddListener(ActionControlRemove);
+            skillButtons[2].onClick.AddListener(ActionControlRotate);
+            confirm.onClick.AddListener(ActionConfirm);
+            cancel.onClick.AddListener(ActionCancel);
         }
         public void SkillPositionControl()
         {
-            foreach (GameObject skillPosition in skillImagePosition)
+            if (Vector3.Distance(skillImagePosition.transform.position, chosenGua.transform.position) <= 0.5f)
             {
-                ChargeSkillImage(skillPosition);
+                MouseChoose.GetInstance().UIChangeSprite(skillImagePosition, chosenGua.GetComponent<Sprite>());
             }
         }
 
@@ -69,13 +87,46 @@ namespace ns
                     randomGuaImage.sprite = guaSpriteAssemble[7]; break;
             }
         }
-        public void ChargeSkillImage(GameObject skillImagePosition)
+
+        private void ActionControlRandomGua()
+        { 
+            skillLogical.SkillChoose(0);
+            ControlSwtich(true);
+        }
+
+        private void ActionControlRemove()
         {
-            Image skillImage =skillImagePosition.GetComponent<Image>();
-            if (Vector3.Distance(skillImagePosition.transform.position, chosenGua.transform.position) <= 0.5f)
+            skillLogical.SkillChoose(1);
+            ControlSwtich(true);
+        }
+
+        private void ActionControlRotate()
+        {
+            skillLogical.SkillChoose(2);
+            ControlSwtich(true);
+        }
+
+        private void ActionConfirm()
+        {
+            roundControl.characterCount += 1;
+            ControlSwtich(false);
+        }
+
+        private void ActionCancel()
+        {
+            roundControl.characterCount -=1;
+            ControlSwtich(false) ;
+        }
+
+        private void ControlSwtich(bool isSwitch)
+        {
+            bool flag = false;
+            if (isSwitch)
             {
-                skillImage.sprite = chosenGuaSprite;
+                flag = true;
             }
+            skillButtonAssemble.SetActive(!flag);
+            confirmButtonAssemble.SetActive(flag);
         }
     }
 }

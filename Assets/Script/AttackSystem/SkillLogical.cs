@@ -9,12 +9,20 @@ namespace ns
     ///<summary>
     public class SkillLogical :MonoBehaviour
     {
+        public GameObject rotatePannel;
+        private InitiateMap InitiateMap;
+        private GameObject scriptAssemble;
+        private void Start()
+        {
+            scriptAssemble = GameObject.Find("ScriptAssemble");
+            InitiateMap = scriptAssemble.GetComponent<InitiateMap>();
+        }
         public void SkillChoose(int choice)
         {
             switch (choice)
             {
                 case 0:
-                    RepeatRandomGua();
+                    ShowRepeatRandomGua();
                     break;
                 case 1:
                     MoveBarrier();
@@ -25,9 +33,15 @@ namespace ns
             }
         }
 
+        private void ShowRepeatRandomGua()
+        {
+            Gua[] RandomGuas = RepeatRandomGua();
+
+        }
+
         private void RotateMap()
         {
-            
+            rotatePannel.SetActive(true);
         }
 
         private void MoveBarrier()
